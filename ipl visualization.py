@@ -35,7 +35,7 @@ df.loc[df['winner'] == "Delhi Daredevils", 'winner'] = "Delhi Capitals"
 
 # Define the team colors
 team_colors = {"Mumbai Indians": "#004ba0",
-               "Royal Challengers Bangalore": "#fcb913",
+               "Royal Challengers Bangalore": "#00FF00",
                "Kings XI Punjab": "#e03a3e",
                "Sunrisers Hyderabad": "#ff822a",
                "Kolkata Knight Riders": "#522886",
@@ -102,7 +102,7 @@ matches_won = df["winner"].value_counts()
 matches_won = matches_won.reindex(matches_played.index)  # Sort by team name
 ax3 = fig.add_subplot(gs[2, 0])
 # Plot the number of matches played by each team
-ax3.bar(matches_played.index, matches_played.values, color='green', alpha=0.5, label='Matches Played')
+ax3.bar(matches_played.index, matches_played.values, color='#8470FF', alpha=0.5, label='Matches Played')
 
 # Plot the number of matches won by each team
 for team in matches_won.index:
@@ -124,11 +124,10 @@ plt.yticks(fontweight='bold')
 
 matches_won = df1.groupby(['Season', 'winner'])['winner'].count().reset_index(name='matches')
 
-# Create the dot plot
 ax4 = fig.add_subplot(gs[0, 1:])
 for i, team in enumerate(matches_won['winner'].unique()):
     team_data = matches_won[matches_won['winner'] == team]
-    ax4.scatter(team_data['Season'], team_data['matches'], s=100, alpha=0.5, label=team)
+    ax4.scatter(team_data['Season'], team_data['matches'], s=100, alpha=0.5, label=team, color=team_colors.get(team))
 # Add labels and legend
 ax4.set_xlabel('Year')
 ax4.set_ylabel('Number of Matches Won')
