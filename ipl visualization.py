@@ -207,7 +207,7 @@ plt.savefig('IPL.jpg')
 plt.show()
 
 
-'''
+
 # Group data by team and count the number of wins
 team_wins = df1.groupby(['winner']).size().reset_index(name='wins')
 
@@ -238,7 +238,7 @@ fig.update_layout(xaxis_title='Season', yaxis_title='Number of Wins', title='His
 
 # Display the interactive histogram
 fig.show(renderer='browser')
-'''
+
 
 
 
